@@ -39,18 +39,18 @@ def start(config):
         if d.name in config["output_channel_names"] or d.entity.id in config["output_channel_ids"]:
             output_channel_entities.append(InputChannel(d.entity.id, d.entity.access_hash))
 
-    # Exit, dont wait for fire.        
+    # Exit, dont wait for fire.
     if not output_channel_entities:
-        logger.error(f"Could not find any output channels in the user's dialogs")
+        logger.error("Could not find any output channels in the user's dialogs")
         sys.exit(1)
 
     if not input_channels_entities:
-        logger.error(f"Could not find any input channels in the user's dialogs")
+        logger.error("Could not find any input channels in the user's dialogs")
         sys.exit(1)
-    
+
     # Use logging and print messages on your console.     
     logging.info(f"Listening on {len(input_channels_entities)} channels. Forwarding messages to {len(output_channel_entities)} channels.")
-    
+
 
     # TELEGRAM NEW MESSAGE - When new message triggers, come here
 
